@@ -81,8 +81,8 @@ function AdminPage({ currentUser, products, onAddProduct, onUpdateProduct, onDel
     return (
       <section className="page-section">
         <div className="container empty-message">
-          <h1>Admin access only</h1>
-          <p>Login with the admin tester account to manage products.</p>
+          <h1>Management access only</h1>
+          <p>Login with the management tester account to manage products.</p>
           <Link className="button" to="/login" state={{ from: "/admin" }}>
             Go to login
           </Link>
@@ -95,13 +95,13 @@ function AdminPage({ currentUser, products, onAddProduct, onUpdateProduct, onDel
     <section className="page-section">
       <div className="container">
         <div className="page-heading">
-          <p className="eyebrow">Product CRUD</p>
-          <h1>Admin products</h1>
+          <p className="eyebrow">Management Dashboard</p>
+          <h1>Product Management</h1>
         </div>
 
         <div className="admin-layout">
           <form className="admin-form" onSubmit={handleSubmit}>
-            <h2>{editingId === null ? "Add product" : "Edit product"}</h2>
+            <h2>{editingId === null ? "Add New Product" : "Edit Product"}</h2>
 
             <div className="form-field">
               <label htmlFor="productName">Product Name</label>

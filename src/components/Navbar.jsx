@@ -26,7 +26,7 @@ function Navbar({ cartCount, currentUser, onLogout }) {
           </NavLink>
           {currentUser?.role === "admin" && (
             <NavLink className={getLinkClass} to="/admin">
-              Admin
+              Manage
             </NavLink>
           )}
           {currentUser ? (

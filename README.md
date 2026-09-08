@@ -19,7 +19,7 @@ Live website: [everyday-market-ecommerce-beta.vercel.app](https://everyday-marke
 - Cash on Delivery payment method
 - Order confirmation page that clears the cart
 - Responsive layout for desktop, tablet, and mobile
-- Admin product CRUD page for creating, viewing, editing, and deleting products
+- Product Management page for creating, viewing, editing, and deleting products
 - Nine React Router routes, including the not-found page
 
 ## Tester accounts
