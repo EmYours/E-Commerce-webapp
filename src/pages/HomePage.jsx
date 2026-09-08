@@ -45,13 +45,13 @@ function HomePage({ products, onAddToCart }) {
     <>
       <section className="hero">
         <div className="container hero-content">
-          <p className="eyebrow">Useful. Simple. Everyday.</p>
-          <h1>Good things for daily life.</h1>
+          <p className="eyebrow">React E-Commerce</p>
+          <h1>E-Commerce Website</h1>
           <p className="hero-text">
-            A small collection of practical items chosen for work, home, and weekends.
+            Add your website introduction here.
           </p>
           <a className="button" href="#products">
-            Browse products
+            View products
           </a>
         </div>
       </section>
@@ -60,8 +60,8 @@ function HomePage({ products, onAddToCart }) {
         <div className="container">
           <div className="section-heading">
             <div>
-              <p className="eyebrow">Our collection</p>
-              <h2>Shop everyday essentials</h2>
+              <p className="eyebrow">Products</p>
+              <h2>Product List</h2>
             </div>
             <p>{filteredProducts.length} products found</p>
           </div>
@@ -72,7 +72,7 @@ function HomePage({ products, onAddToCart }) {
               <input
                 id="search"
                 type="search"
-                placeholder="Try “bottle” or “watch”"
+                placeholder="Search by product name"
                 value={searchText}
                 onChange={handleSearch}
               />
