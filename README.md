@@ -2,6 +2,8 @@
 
 Everyday Market is a simple e-commerce website made with React and Vite. Product, cart, and order data stay in memory and reset when the page is refreshed. The project does not use a backend, database, Axios, or external API.
 
+Live website: [everyday-market-ecommerce-beta.vercel.app](https://everyday-market-ecommerce-beta.vercel.app)
+
 ## Features
 
 - 10 hardcoded products with local images
