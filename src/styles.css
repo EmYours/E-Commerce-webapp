@@ -853,7 +853,16 @@ main {
   align-items: center;
 }
 
+.login-layout {
+  display: grid;
+  max-width: 900px;
+  grid-template-columns: minmax(0, 540px) minmax(240px, 1fr);
+  align-items: center;
+  gap: 20px;
+}
+
 .account-card {
+  width: 100%;
   max-width: 540px;
   padding: 36px;
   border: 1px solid var(--border);
@@ -911,6 +920,70 @@ main {
   font-size: 0.72rem;
   line-height: 1.5;
   text-align: center;
+}
+
+.tester-panel {
+  padding: 20px;
+  border: 1px solid #dde2de;
+  border-radius: 12px;
+  background: #f5f6f5;
+}
+
+.tester-heading {
+  margin-bottom: 6px;
+  color: #3f4943;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tester-intro {
+  margin-bottom: 17px;
+  color: #7a837d;
+  font-size: 0.76rem;
+  line-height: 1.45;
+}
+
+.tester-account {
+  display: flex;
+  padding: 14px 0;
+  flex-direction: column;
+  gap: 5px;
+  border-top: 1px solid #dce1dd;
+}
+
+.tester-account-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.tester-account-top strong {
+  color: #465149;
+  font-size: 0.8rem;
+}
+
+.tester-account-top button {
+  padding: 4px 0;
+  border: 0;
+  color: var(--green);
+  background: transparent;
+  font-size: 0.7rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.tester-account-top button:hover {
+  text-decoration: underline;
+}
+
+.tester-account > span {
+  overflow-wrap: anywhere;
+  color: #6f7872;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 0.71rem;
 }
 
 .admin-layout {
@@ -1232,6 +1305,11 @@ main {
   .product-details {
     grid-template-columns: 1fr;
     gap: 32px;
+  }
+
+  .login-layout {
+    max-width: 540px;
+    grid-template-columns: 1fr;
   }
 
   .form-row {
