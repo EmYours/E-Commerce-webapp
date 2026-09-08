@@ -1,9 +1,16 @@
 import PropTypes from "prop-types";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 function Navbar({ cartCount, currentUser, onLogout }) {
+  const navigate = useNavigate();
+
   function getLinkClass({ isActive }) {
     return isActive ? "nav-link active" : "nav-link";
+  }
+
+  function handleLogout() {
+    onLogout();
+    navigate("/");
   }
 
   return (
@@ -32,7 +39,7 @@ function Navbar({ cartCount, currentUser, onLogout }) {
           {currentUser ? (
             <div className="account-menu">
               <span className="account-name">Hi, {currentUser.fullName.split(" ")[0]}</span>
-              <button className="logout-button" type="button" onClick={onLogout}>
+              <button className="logout-button" type="button" onClick={handleLogout}>
                 Logout
               </button>
             </div>
