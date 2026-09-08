@@ -1,12 +1,12 @@
-# Everyday Market
+# The E-Commerce
 
-Everyday Market is a simple e-commerce website made with React and Vite. Product, cart, and order data stay in memory and reset when the page is refreshed. The project does not use a backend, database, Axios, or external API.
+The E-Commerce is a simple e-commerce website made with React and Vite. Product, cart, account, and order data stay in memory and reset when the page is refreshed. The project does not use a backend, database, Axios, or external API.
 
 Live website: [everyday-market-ecommerce-beta.vercel.app](https://everyday-market-ecommerce-beta.vercel.app)
 
 ## Features
 
-- 10 hardcoded products with local images
+- 8 editable placeholder products with one React logo image
 - Product search and category filter
 - Four-product pagination
 - Product details page with price and stock
@@ -19,7 +19,17 @@ Live website: [everyday-market-ecommerce-beta.vercel.app](https://everyday-marke
 - Cash on Delivery payment method
 - Order confirmation page that clears the cart
 - Responsive layout for desktop, tablet, and mobile
-- Six React Router routes, including the not-found page
+- Admin product CRUD page for creating, viewing, editing, and deleting products
+- Nine React Router routes, including the not-found page
+
+## Tester accounts
+
+| Customer | Email | Password |
+| --- | --- | --- |
+| Admin Tester | `admin@ecommerce.test` | `admin123` |
+| Customer Tester | `customer@ecommerce.test` | `customer123` |
+
+Use the admin account to test product CRUD. Use the customer account to test cart ordering and checkout autofill. You can also register another temporary customer account.
 
 ## Run the project
 
@@ -54,7 +64,7 @@ npm run preview
 ```bash
 git init
 git add .
-git commit -m "Build Everyday Market e-commerce app"
+git commit -m "Build The E-Commerce web app"
 git branch -M main
 git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
 git push -u origin main

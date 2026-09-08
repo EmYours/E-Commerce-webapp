@@ -48,7 +48,7 @@ function CheckoutPage({ cart, currentUser, onOrderComplete }) {
     event.preventDefault();
 
     if (validateForm()) {
-      const orderNumber = `EM-${Date.now().toString().slice(-6)}`;
+      const orderNumber = `EC-${Date.now().toString().slice(-6)}`;
       onOrderComplete();
       navigate("/order-success", {
         state: { customerName: formData.fullName, orderNumber },

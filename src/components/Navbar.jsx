@@ -9,9 +9,9 @@ function Navbar({ cartCount, currentUser, onLogout }) {
   return (
     <header className="site-header">
       <div className="container nav-content">
-        <Link className="brand" to="/" aria-label="Everyday Market home">
+        <Link className="brand" to="/" aria-label="The E-Commerce home">
           <span className="brand-mark">E</span>
-          <span>Everyday Market</span>
+          <span>The E-Commerce</span>
         </Link>
 
         <nav className="nav-menu" aria-label="Main navigation">
@@ -24,6 +24,11 @@ function Navbar({ cartCount, currentUser, onLogout }) {
           <NavLink className={getLinkClass} to="/checkout">
             Checkout
           </NavLink>
+          {currentUser?.role === "admin" && (
+            <NavLink className={getLinkClass} to="/admin">
+              Admin
+            </NavLink>
+          )}
           {currentUser ? (
             <div className="account-menu">
               <span className="account-name">Hi, {currentUser.fullName.split(" ")[0]}</span>
@@ -46,6 +51,7 @@ Navbar.propTypes = {
   cartCount: PropTypes.number,
   currentUser: PropTypes.shape({
     fullName: PropTypes.string.isRequired,
+    role: PropTypes.string,
   }),
   onLogout: PropTypes.func,
 };

@@ -22,7 +22,11 @@ function LoginPage({ onLogin }) {
     const result = onLogin(email.trim(), password);
 
     if (result.success) {
-      navigate(returnPage);
+      if (result.user.role === "admin" && returnPage === "/") {
+        navigate("/admin");
+      } else {
+        navigate(returnPage);
+      }
     } else {
       setError(result.message);
     }
