@@ -13,6 +13,8 @@ Live website: [everyday-market-ecommerce-beta.vercel.app](https://everyday-marke
 - Add to cart, remove item, and quantity controls
 - Per-item subtotal, cart total, and cart counter
 - Controlled checkout form
+- In-memory registration, login, and logout
+- Automatic checkout autofill for logged-in customers
 - HTML and custom JavaScript validation
 - Cash on Delivery payment method
 - Order confirmation page that clears the cart
@@ -41,6 +43,7 @@ npm run preview
 - `src/pages/HomePage.jsx` filters products and shows four products per page.
 - `src/pages/CartPage.jsx` calculates each subtotal and the full order total.
 - `src/pages/CheckoutPage.jsx` controls every form input with `useState`, validates the values, clears the cart, and opens the success page.
+- `src/pages/LoginPage.jsx` and `src/pages/RegisterPage.jsx` manage the customer forms. Accounts are stored in `App.jsx` with `useState`, so they reset on refresh as required by the activity.
 - Props pass product and cart data into reusable components. PropTypes check the expected prop types.
 
 ## GitHub and Vercel deployment

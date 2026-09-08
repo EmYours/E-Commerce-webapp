@@ -2,13 +2,13 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import { Link, useNavigate } from "react-router-dom";
 
-function CheckoutPage({ cart, onOrderComplete }) {
+function CheckoutPage({ cart, currentUser, onOrderComplete }) {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    phone: "",
-    address: "",
+    fullName: currentUser ? currentUser.fullName : "",
+    email: currentUser ? currentUser.email : "",
+    phone: currentUser ? currentUser.phone : "",
+    address: currentUser ? currentUser.address : "",
     payment: "Cash on Delivery",
   });
   const [errors, setErrors] = useState({});
@@ -81,6 +81,20 @@ function CheckoutPage({ cart, onOrderComplete }) {
         <div className="checkout-layout">
           <form className="checkout-form" onSubmit={handleSubmit}>
             <h2>Delivery details</h2>
+
+            {currentUser ? (
+              <div className="account-notice">
+                <strong>Signed in as {currentUser.fullName}</strong>
+                <span>Your saved details have been filled in below.</span>
+              </div>
+            ) : (
+              <div className="account-notice guest-notice">
+                <span>Have an account?</span>
+                <Link to="/login" state={{ from: "/checkout" }}>
+                  Login to autofill your details
+                </Link>
+              </div>
+            )}
 
             <div className="form-field">
               <label htmlFor="fullName">Full Name</label>
@@ -199,7 +213,17 @@ function CheckoutPage({ cart, onOrderComplete }) {
 
 CheckoutPage.propTypes = {
   cart: PropTypes.arrayOf(PropTypes.object).isRequired,
+  currentUser: PropTypes.shape({
+    fullName: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    phone: PropTypes.string.isRequired,
+    address: PropTypes.string.isRequired,
+  }),
   onOrderComplete: PropTypes.func.isRequired,
+};
+
+CheckoutPage.defaultProps = {
+  currentUser: null,
 };
 
 export default CheckoutPage;

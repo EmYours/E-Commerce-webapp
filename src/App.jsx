@@ -8,11 +8,46 @@ import ProductPage from "./pages/ProductPage";
 import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import OrderSuccessPage from "./pages/OrderSuccessPage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
 import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   const [products] = useState(startingProducts);
   const [cart, setCart] = useState([]);
+  const [accounts, setAccounts] = useState([]);
+  const [currentUser, setCurrentUser] = useState(null);
+
+  function registerUser(newAccount) {
+    const emailExists = accounts.find(
+      (account) => account.email.toLowerCase() === newAccount.email.toLowerCase(),
+    );
+
+    if (emailExists) {
+      return { success: false, message: "An account with this email already exists." };
+    }
+
+    setAccounts([...accounts, newAccount]);
+    setCurrentUser(newAccount);
+    return { success: true };
+  }
+
+  function loginUser(email, password) {
+    const account = accounts.find(
+      (item) => item.email.toLowerCase() === email.toLowerCase() && item.password === password,
+    );
+
+    if (!account) {
+      return { success: false, message: "Email or password is incorrect." };
+    }
+
+    setCurrentUser(account);
+    return { success: true };
+  }
+
+  function logoutUser() {
+    setCurrentUser(null);
+  }
 
   function addToCart(product) {
     const itemInCart = cart.find((item) => item.id === product.id);
@@ -67,7 +102,7 @@ function App() {
 
   return (
     <div className="app">
-      <Navbar cartCount={cartCount} />
+      <Navbar cartCount={cartCount} currentUser={currentUser} onLogout={logoutUser} />
 
       <main>
         <Routes>
@@ -87,7 +122,21 @@ function App() {
               />
             }
           />
-          <Route path="/checkout" element={<CheckoutPage cart={cart} onOrderComplete={clearCart} />} />
+          <Route
+            path="/checkout"
+            element={
+              <CheckoutPage
+                cart={cart}
+                currentUser={currentUser}
+                onOrderComplete={clearCart}
+              />
+            }
+          />
+          <Route path="/login" element={<LoginPage onLogin={loginUser} />} />
+          <Route
+            path="/register"
+            element={<RegisterPage onRegister={registerUser} hasCartItems={cart.length > 0} />}
+          />
           <Route path="/order-success" element={<OrderSuccessPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

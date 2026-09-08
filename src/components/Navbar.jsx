@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { Link, NavLink } from "react-router-dom";
 
-function Navbar({ cartCount }) {
+function Navbar({ cartCount, currentUser, onLogout }) {
   function getLinkClass({ isActive }) {
     return isActive ? "nav-link active" : "nav-link";
   }
@@ -24,6 +24,18 @@ function Navbar({ cartCount }) {
           <NavLink className={getLinkClass} to="/checkout">
             Checkout
           </NavLink>
+          {currentUser ? (
+            <div className="account-menu">
+              <span className="account-name">Hi, {currentUser.fullName.split(" ")[0]}</span>
+              <button className="logout-button" type="button" onClick={onLogout}>
+                Logout
+              </button>
+            </div>
+          ) : (
+            <NavLink className={getLinkClass} to="/login">
+              Login
+            </NavLink>
+          )}
         </nav>
       </div>
     </header>
@@ -32,10 +44,16 @@ function Navbar({ cartCount }) {
 
 Navbar.propTypes = {
   cartCount: PropTypes.number,
+  currentUser: PropTypes.shape({
+    fullName: PropTypes.string.isRequired,
+  }),
+  onLogout: PropTypes.func,
 };
 
 Navbar.defaultProps = {
   cartCount: 0,
+  currentUser: null,
+  onLogout: function () {},
 };
 
 export default Navbar;
